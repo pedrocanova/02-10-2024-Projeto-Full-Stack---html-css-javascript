@@ -17,4 +17,19 @@ let filmes = [
     }
 ]
 
+app.get("/filmes", (req, res) => {
+    res.json(filmes)
+})
+
+app.post("/filmes", (req, res) => {
+    // captura o que o usuário enviou
+    const titulo = req.body.titulo
+    const sinopse = req.body.sinopse
+    // monta o objeto filme para incluir na base
+    const filme = {titulo: titulo, sinopse: sinopse}
+    // adiciona o novo filme a lista de filmes
+    filmes.push(filme)
+    // mostra a base atualizada
+    res.json(filmes)
+})
 app.listen(3000, () => console.log("up and running"))
